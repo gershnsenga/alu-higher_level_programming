@@ -1,16 +1,14 @@
-
 #!/usr/bin/python3
-"""__summary__
-- Write a Python script that takes in a URL and an email address,
-- sends a POST request to the passed URL with the email as a parameter,
-- and finally displays the body of the response.
+"""A script that:
+- takes in a URL,
+- sends a request to the URL and displays the value
+- of the X-Request-Id variable found in the header ofthe response.
 """
 import sys
 import requests
 
-if __name__ == '__main__':
-        url = sys.argv[1]
-            value = {'email': sys.argv[2]}
+if __name__ == "__main__":
 
-                reqs = requests.post(url, data=value)
-                    print(reqs.text)
+    new_value = {'email': sys.argv[2]}
+    req = requests.post(sys.argv[1], new_value)
+    print(req.text)
