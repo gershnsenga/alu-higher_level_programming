@@ -5,9 +5,14 @@
 """
 import requests
 
+url = "https://alu-intranet.hbtn.io/status"
+response = requests.get(url)
 
-if _name_ == "_main_":
-    r = requests.get("https://intranet.hbtn.io/status")
+if response.status_code == 200:
+    data = response.json()
     print("Body response:")
-    print("\t- type: {}".format(type(r.text)))
-    print("\t- content: {}".format("OK" if len(r.text) > 100 else r.text))
+    print("\t- type:", type(data))
+    print("\t- content:", data)
+else:
+    print("Error: Unable to fetch data from the URL. Status code:", response.status_code)
+
